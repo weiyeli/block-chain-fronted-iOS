@@ -14,14 +14,6 @@ class NetworkService {
 
     static let shared = NetworkService()
 
-    let parameters = ["name": "lhb",
-                                  "phone": "999",
-                                  "username": "pesw123",
-                                  "password": "123456",
-                                  "password2": "123456",
-                                  "userType": "1",
-                                  "isCreated": "false"]
-
     // 用户注册
     func register(user: User) {
         DispatchQueue.global().async { [weak self] in
@@ -106,7 +98,7 @@ class NetworkService {
         }
     }
 
-    // 拿病历
+    // 获取病历信息
     func getRecords(name: String, completionHandler: @escaping (_ res: [[String: Any]]) -> Void) {
         DispatchQueue.global().async {
             let url = URL(string: "http://localhost:5000/home/checkinfo")?.appendingPathComponent(name)
@@ -138,6 +130,7 @@ class NetworkService {
                                 let res = try JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
                                 // 把数据传输给VC
                                 completionHandler(res)
+                                print(res)
                             } catch let error as NSError {
                                 print(error)
                             }

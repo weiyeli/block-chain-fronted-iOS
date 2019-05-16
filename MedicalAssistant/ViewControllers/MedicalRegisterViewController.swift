@@ -54,7 +54,8 @@ class MedicalRegisterViewController: UIViewController {
     }
 
     @objc private func register() {
-
+        // TODO: 注册一个用户
+        self.navigationController?.popViewController(animated: true)
     }
 }
 

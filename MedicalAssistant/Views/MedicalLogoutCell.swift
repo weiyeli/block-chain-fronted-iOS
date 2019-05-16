@@ -11,11 +11,13 @@ import SnapKit
 
 class MedicalLogoutCell: UITableViewCell {
 
+    var logoutCore: (() -> Void)?
+
     private lazy var logoutButton: UIButton = {
         let button = UIButton(frame: .zero)
         button.setTitle("退出登录", for: .normal)
         button.setTitleColor(.blue, for: .normal)
-        button.addTarget(self, action: #selector(logoutCore), for: .touchUpInside)
+        button.addTarget(self, action: #selector(logout), for: .touchUpInside)
         button.backgroundColor = .white
         return button
     }()
@@ -38,7 +40,9 @@ class MedicalLogoutCell: UITableViewCell {
         }
     }
 
-    @objc private func logoutCore() {
-        
+    @objc func logout() {
+        if let logoutCore = logoutCore {
+            logoutCore()
+        }
     }
 }

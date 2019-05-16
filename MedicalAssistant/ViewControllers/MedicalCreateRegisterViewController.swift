@@ -55,11 +55,11 @@ class MedicalCreateRegisterViewController: UIViewController {
         return tf
     }()
 
-    private lazy var recordTextFile: UITextField = {
-        let tf = UITextField(frame: .zero)
-        tf.placeholder = "请填写问诊信息"
-        tf.delegate = self
-        return tf
+    private lazy var recordTextView: UITextView = {
+        let tv = UITextView(frame: .zero)
+        tv.font = UIFont.systemFont(ofSize: 20.0)
+        tv.delegate = self
+        return tv
     }()
 
     private var patientName: String?
@@ -87,14 +87,19 @@ class MedicalCreateRegisterViewController: UIViewController {
             return
         }
         // 创建一张新的病历
-        guard let record = recordTextFile.text,
+        guard let record = recordTextView.text,
             let doctorName = doctorNameTextField.text,
             let hospitalName = hospitalNameTextField.text,
             let createdTime = dateTextField.text else {
                 print("信息输入不对")
                 return
         }
-        let newRecord = Record(record: record, doctorName: doctorName, hospitalName: hospitalName, createdTime: createdTime)
+        let newRecord = Record(id: 0,
+                               record: record,
+                               doctorName: doctorName,
+                               hospitalName: hospitalName,
+                               createdTime: createdTime,
+                               address: "")
         NetworkService.shared.createNewRecords(name: name, record: newRecord, completionHandler: { [weak self] (res) in
                 let json = JSON(arrayLiteral: res)
                 print(json)
@@ -151,9 +156,9 @@ class MedicalCreateRegisterViewController: UIViewController {
             make.height.equalTo(30)
         }
 
-        view.addSubview(recordTextFile)
-        recordTextFile.snp.makeConstraints { make in
-            make.top.equalTo(dateTextField.snp.bottom).offset(5)
+        view.addSubview(recordTextView)
+        recordTextView.snp.makeConstraints { make in
+            make.top.equalTo(dateTextField.snp.bottom).offset(20)
             make.left.right.equalToSuperview()
             make.height.equalTo(200)
         }
@@ -164,6 +169,10 @@ extension MedicalCreateRegisterViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return textField.resignFirstResponder()
     }
+}
+
+extension MedicalCreateRegisterViewController: UITextViewDelegate {
+    
 }
 
 extension MedicalCreateRegisterViewController {

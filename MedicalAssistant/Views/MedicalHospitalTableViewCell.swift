@@ -45,7 +45,7 @@ class MedicalHospitalTableViewCell: UITableViewCell {
         hospitalName.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(10)
             make.centerY.equalToSuperview()
-            make.width.equalTo(100)
+            make.width.equalTo(200)
         }
 
         contentView.addSubview(bookButton)

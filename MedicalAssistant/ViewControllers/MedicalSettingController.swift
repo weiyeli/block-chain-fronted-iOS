@@ -124,6 +124,9 @@ extension MedicalSettingController: UITableViewDataSource {
                 print("获取logout cell失败")
                 return UITableViewCell()
             }
+            cell.logoutCore = { [weak self] in
+                self?.dismiss(animated: true, completion: nil)
+            }
             return cell
         }
         let setting = settings[index]

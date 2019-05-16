@@ -26,6 +26,9 @@
 		E12EF799226F26D90087D733 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12EF798226F26D90087D733 /* Record.swift */; };
 		E12EF79F226F2B8B0087D733 /* MedicalPhysicianVisitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12EF79E226F2B8B0087D733 /* MedicalPhysicianVisitsViewController.swift */; };
 		E12EF7A1226F3E1D0087D733 /* MedicalCreateRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12EF7A0226F3E1D0087D733 /* MedicalCreateRegisterViewController.swift */; };
+		E1345B74228253E200CEF0E9 /* MedicalRecordDetail2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1345B73228253E200CEF0E9 /* MedicalRecordDetail2ViewController.swift */; };
+		E1345B76228254AC00CEF0E9 /* MedicalRecordFirstCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1345B75228254AC00CEF0E9 /* MedicalRecordFirstCell.swift */; };
+		E1345B78228256F600CEF0E9 /* MedicalRecordSecondCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1345B77228256F600CEF0E9 /* MedicalRecordSecondCell.swift */; };
 		E137F0D6226EA45400008520 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E137F0D5226EA45400008520 /* UserService.swift */; };
 		E137F0D8226EAEA300008520 /* MedicalHospitalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E137F0D7226EAEA300008520 /* MedicalHospitalTableViewCell.swift */; };
 		E13C0659226C5C7300345E7C /* MedicalRecordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13C0658226C5C7300345E7C /* MedicalRecordTableViewController.swift */; };
@@ -89,6 +92,9 @@
 		E12EF798226F26D90087D733 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		E12EF79E226F2B8B0087D733 /* MedicalPhysicianVisitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalPhysicianVisitsViewController.swift; sourceTree = "<group>"; };
 		E12EF7A0226F3E1D0087D733 /* MedicalCreateRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalCreateRegisterViewController.swift; sourceTree = "<group>"; };
+		E1345B73228253E200CEF0E9 /* MedicalRecordDetail2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalRecordDetail2ViewController.swift; sourceTree = "<group>"; };
+		E1345B75228254AC00CEF0E9 /* MedicalRecordFirstCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalRecordFirstCell.swift; sourceTree = "<group>"; };
+		E1345B77228256F600CEF0E9 /* MedicalRecordSecondCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalRecordSecondCell.swift; sourceTree = "<group>"; };
 		E137F0D5226EA45400008520 /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		E137F0D7226EAEA300008520 /* MedicalHospitalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalHospitalTableViewCell.swift; sourceTree = "<group>"; };
 		E13C0658226C5C7300345E7C /* MedicalRecordTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalRecordTableViewController.swift; sourceTree = "<group>"; };
@@ -184,7 +190,6 @@
 				E1F0450A226B3AAB00920E86 /* Service */,
 				E12A5CB1222CFB7A009FD5F3 /* SupportFiles */,
 				E12A5CB0222CF8F2009FD5F3 /* Views */,
-				E12A5CAF222CF8B2009FD5F3 /* ViewModels */,
 				E12A5CAE222CF8A0009FD5F3 /* ViewControllers */,
 				E12A5CAD222CF83A009FD5F3 /* Models */,
 				E12A5C7F222CF81F009FD5F3 /* AppDelegate.swift */,
@@ -235,15 +240,9 @@
 				E12EF79E226F2B8B0087D733 /* MedicalPhysicianVisitsViewController.swift */,
 				E12EF7A0226F3E1D0087D733 /* MedicalCreateRegisterViewController.swift */,
 				E13F4A8D2271758B00B54571 /* MedicalRecordDetailViewController.swift */,
+				E1345B73228253E200CEF0E9 /* MedicalRecordDetail2ViewController.swift */,
 			);
 			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		E12A5CAF222CF8B2009FD5F3 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		E12A5CB0222CF8F2009FD5F3 /* Views */ = {
@@ -256,6 +255,8 @@
 				E13C065A226C5F6500345E7C /* MedicalRecordCell.swift */,
 				E137F0D7226EAEA300008520 /* MedicalHospitalTableViewCell.swift */,
 				E13F4A8F2271BF5F00B54571 /* MedicalLogoutCell.swift */,
+				E1345B75228254AC00CEF0E9 /* MedicalRecordFirstCell.swift */,
+				E1345B77228256F600CEF0E9 /* MedicalRecordSecondCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -519,10 +520,12 @@
 				E12A5CB3222CFD0D009FD5F3 /* MedicalTabBarViewController.swift in Sources */,
 				E1F04510226B622A00920E86 /* MedicalRegisterViewController.swift in Sources */,
 				E1411D81226DCD710010B0F8 /* MedicalHospitalsViewController.swift in Sources */,
+				E1345B78228256F600CEF0E9 /* MedicalRecordSecondCell.swift in Sources */,
 				E12EF799226F26D90087D733 /* Record.swift in Sources */,
 				E13F4A902271BF5F00B54571 /* MedicalLogoutCell.swift in Sources */,
 				E1411D7F226DCBB40010B0F8 /* Doctor.swift in Sources */,
 				E12EF79F226F2B8B0087D733 /* MedicalPhysicianVisitsViewController.swift in Sources */,
+				E1345B74228253E200CEF0E9 /* MedicalRecordDetail2ViewController.swift in Sources */,
 				E137F0D6226EA45400008520 /* UserService.swift in Sources */,
 				E103632C2233BA7C0042A21B /* MedicalCollectionHeaderCell.swift in Sources */,
 				E137F0D8226EAEA300008520 /* MedicalHospitalTableViewCell.swift in Sources */,
@@ -531,6 +534,7 @@
 				E12A5C80222CF81F009FD5F3 /* AppDelegate.swift in Sources */,
 				E103632A22325A330042A21B /* User.swift in Sources */,
 				E1F0450E226B600300920E86 /* MedicalRegisterCell.swift in Sources */,
+				E1345B76228254AC00CEF0E9 /* MedicalRecordFirstCell.swift in Sources */,
 				E187491B223253A0000219C8 /* MedicalUserProfileCell.swift in Sources */,
 				E12A5CBB222D0C81009FD5F3 /* MedicalLoginViewController.swift in Sources */,
 			);

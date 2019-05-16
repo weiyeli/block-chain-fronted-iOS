@@ -41,6 +41,7 @@ class MedicalLoginViewController: UIViewController {
         textField.borderStyle = .roundedRect
         textField.placeholder = "请输入账号"
         textField.delegate = self
+        textField.autocapitalizationType = UITextAutocapitalizationType.none
         return textField
     }()
     
@@ -139,7 +140,12 @@ class MedicalLoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "医疗助手"
         setupSubViews()
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     @objc private func loginButtonClicked() {
@@ -155,7 +161,7 @@ class MedicalLoginViewController: UIViewController {
     private func showLoginStatus() {
         let alert = UIAlertController(title: nil, message: "登录成功", preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "确定", style: UIAlertAction.Style.default, handler: { [weak self] _ in
-            self?.navigationController?.pushViewController(MedicalSettingController(), animated: true)
+            self?.present(UINavigationController(rootViewController: MedicalSettingController()), animated: true, completion: nil)
         }))
         self.present(alert, animated: false, completion: nil)
     }

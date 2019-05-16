@@ -65,8 +65,8 @@ class MedicalRecordCell: UITableViewCell {
         }
     }
 
-    func render(record: RecordPresender) {
-        numberLabel.text = record.number
+    func render(record: Record) {
+        numberLabel.text = String(record.id)
         hospitalNameLabel.text = record.hospitalName
         createdTimeLabel.text = record.createdTime
     }

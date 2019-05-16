@@ -8,15 +8,9 @@
 
 import UIKit
 
-struct RecordPresender {
-    var number: String
-    var hospitalName: String
-    var createdTime: String
-}
-
 class MedicalRecordTableViewController: UITableViewController {
 
-    private var data = [RecordPresender]()
+    private var records = [Record]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,13 +25,18 @@ class MedicalRecordTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return records.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MedicalRecordCell", for: indexPath) as! MedicalRecordCell
-        cell.render(record: data[indexPath.row])
+        cell.render(record: records[indexPath.row])
         return cell
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let record = records[indexPath.row]
+        self.navigationController?.pushViewController(MedicalRecordDetail2ViewController(record: record), animated: true)
     }
 
     private func loadData() {
@@ -46,16 +45,26 @@ class MedicalRecordTableViewController: UITableViewController {
             return
         }
         NetworkService.shared.getRecords(name: userName) { [weak self] res in
+            guard res.count > 0 else {
+                print("病历数据为空")
+                return
+            }
             for i in 1...res.count {
-                guard let hospitalName = res[i-1]["hospital"],
-                    let time = res[i-1]["date"] else {
+                guard let hospitalName = res[i-1]["hospital"] as? String,
+                    let doctorName = res[i-1]["doctor"] as? String,
+                    let createdTime = res[i-1]["date"] as? String,
+                    let address = res[i-1]["contract"] as? String,
+                    let msg = res[i-1]["record"] as? String else {
                         print("医院数据获取错误")
                         return
                 }
-                let recordPresender = RecordPresender(number: String(i),
-                                                      hospitalName: hospitalName as! String,
-                                                      createdTime: time as! String)
-                self?.data.append(recordPresender)
+                let record = Record(id: i,
+                                    record: msg,
+                                    doctorName: doctorName,
+                                    hospitalName: hospitalName,
+                                    createdTime: createdTime,
+                                    address: address)
+                self?.records.append(record)
             }
             DispatchQueue.main.async { [weak self] in
                 self?.tableView.reloadData()
